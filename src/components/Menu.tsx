@@ -1,6 +1,6 @@
 "use client";
 
-import { role, currentUser } from "@/lib/data";
+import { role, currentUser } from "src/lib/data";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
