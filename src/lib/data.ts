@@ -1,10 +1,7 @@
 // ==============================
 // TEMPORARY DEMO DATA (Mock)
 // ใช้สำหรับแสดงผลฝั่ง Frontend
-// ==============================
-
-// role ผู้ใช้งาน (ชั่วคราว)
-export const role = "admin"; // "admin" | "user"
+// ==============================admin" | "user"
 
 // ------------------------------
 // หมวดหมู่ครุภัณฑ์
@@ -84,3 +81,86 @@ export const repairHistories = [
         note: "ส่งซ่อมร้านภายนอก",
     },
 ];
+// ------------------------------
+
+// /lib/data.ts
+export type Role = "admin" | "user";
+
+export const role: Role = "admin"; 
+// ✅ ตอนใช้จริงให้ดึงจาก session/DB แล้วค่อย set เป็น "admin" หรือ "user"
+
+export type MenuItem = {
+  icon: string;     // path ใน public เช่น "/dashboard.png"
+  label: string;    // ชื่อเมนูภาษาไทย
+  href: string;
+  visible: Role[];
+};
+
+export const menuItems: MenuItem[] = [
+  // ====== Common ======
+  {
+    icon: "/dashboard.png",
+    label: "แดชบอร์ด",
+    href: "/dashboard",
+    visible: ["admin", "user"],
+  },
+  {
+    icon: "/karuphan.png",
+    label: "รายการครุภัณฑ์",
+    href: "/equipment",
+    visible: ["admin", "user"],
+  },
+  {
+    icon: "/mark.png",
+    label: "สถานที่ตั้ง",
+    href: "/locations",
+    visible: ["admin", "user"],
+  },
+  {
+    icon: "/history.png",
+    label: "ประวัติการซ่อมแซม",
+    href: "/repairs",
+    visible: ["admin", "user"],
+  },
+  {
+    icon: "/report.png",
+    label: "รายงานสรุปผล",
+    href: "/reports",
+    visible: ["admin", "user"],
+  },
+
+  // ====== Admin only ======
+  {
+    icon: "/list.png",
+    label: "จัดการครุภัณฑ์",
+    href: "/admin/equipment/manage",
+    visible: ["admin"],
+  },
+  {
+    icon: "/plus.png",
+    label: "เพิ่มประเภทครุภัณฑ์",
+    href: "/admin/categories/new",
+    visible: ["admin"],
+  },
+  {
+    icon: "/plus.png",
+    label: "เพิ่มหน่วยครุภัณฑ์",
+    href: "/admin/units/new",
+    visible: ["admin"],
+  },
+  {
+    icon: "/pinperson.png",
+    label: "จัดการรหัสการเข้าถึงระบบ",
+    href: "/admin/access",
+    visible: ["admin"],
+  },
+
+  // ====== Logout (Common) ======
+  {
+    icon: "/logout.png",
+    label: "ออกจากระบบ",
+    href: "/logout",
+    visible: ["admin", "user"],
+  },
+];
+
