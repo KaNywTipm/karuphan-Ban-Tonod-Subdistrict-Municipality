@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 const notoSansThai = Noto_Sans_Thai({ subsets: ["thai"] });
 
 export const metadata: Metadata = {
-  title: "Karuphan-BanTonod Subdistrict Municipality",
+  title: "ระบบบันทึกครุภัณฑ์ภายในสำนักปลัดเทศบาลตำบลบ้านโตนด",
   description: "Asset Recording System for the Office of the Permanent Secretary, Ban Tonod Subdistrict Municipality",
 };
 
